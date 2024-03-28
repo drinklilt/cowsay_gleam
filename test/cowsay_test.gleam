@@ -31,3 +31,26 @@ pub fn wrap_lines_very_long_test() {
     "say cowsay cowsay cowsay cowsay cowsay c", "owsay cowsay",
   ])
 }
+
+pub fn generate_bubble_short_test() {
+  cowsay.generate_bubble("cowsay")
+  |> should.equal(" --------\n| cowsay |\n --------\n")
+}
+
+pub fn generate_bubble_long_test() {
+  cowsay.generate_bubble(
+    "cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay",
+  )
+  |> should.equal(
+    " ------------------------------------------\n| cowsay cowsay cowsay cowsay cowsay cowsa |\n| y cowsay cowsay cowsay cowsay cowsay     |\n ------------------------------------------\n",
+  )
+}
+
+pub fn generate_bubble_very_long_test() {
+  cowsay.generate_bubble(
+    "cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay cowsay",
+  )
+  |> should.equal(
+    " ------------------------------------------\n| cowsay cowsay cowsay cowsay cowsay cowsa |\n| y cowsay cowsay cowsay cowsay cowsay cow |\n| say cowsay cowsay cowsay cowsay cowsay c |\n| owsay cowsay                             |\n ------------------------------------------\n",
+  )
+}
