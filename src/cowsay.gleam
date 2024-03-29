@@ -2,6 +2,7 @@ import gleam/io
 import gleam/string
 import gleam/list
 import gleam/erlang.{get_line}
+import cows.{default}
 import argv
 
 const line_max_length = 40
@@ -14,7 +15,12 @@ pub fn main() {
   }
 
   let sentence = string.trim(string.join(words, " "))
-  io.print(generate_bubble(sentence))
+  //io.print(generate_bubble(sentence))
+  io.print(draw(sentence, default))
+}
+
+pub fn draw(text: String, cow: fn() -> String) -> String {
+  generate_bubble(text) <> cow()
 }
 
 pub fn generate_bubble(text: String) {
